@@ -4,30 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moussa Sakho | Cybersecurity Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #0b0f1a;
+    background: linear-gradient(135deg, #0b0f1a, #0d1b2a);
     color: #e6f1ff;
+    overflow-x: hidden;
 }
 
 header {
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
 }
 
 h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 48px;
     color: #00c3ff;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #007bff; }
+    to { text-shadow: 0 0 25px #00c3ff; }
 }
 
 h2 {
     color: #007bff;
     margin-top: 60px;
+    border-left: 4px solid #00c3ff;
+    padding-left: 10px;
 }
 
 section {
@@ -38,15 +49,35 @@ section {
 
 .card {
     background-color: #1c1f2b;
-    padding: 20px;
+    padding: 25px;
     margin-top: 20px;
     border-radius: 10px;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: translateY(-5px);
     box-shadow: 0 0 20px #007bff;
+}
+
+.button-container {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #00c3ff;
+    box-shadow: 0 0 15px #00c3ff;
 }
 
 .footer {
@@ -62,58 +93,47 @@ section {
 <header>
     <h1>Moussa Sakho</h1>
     <p>Administrateur d’Infrastructure Sécurisée</p>
-    <p>Spécialisation Cybersécurité & Sécurisation Réseau</p>
+    <p>Spécialisation en Cybersécurité & Architecture Réseau Sécurisée</p>
+
+    <div class="button-container">
+        <a href="#" class="btn">Télécharger CV</a>
+        <a href="https://github.com/msaka-75" target="_blank" class="btn">Voir GitHub</a>
+    </div>
 </header>
 
 <section>
     <h2>À propos</h2>
     <div class="card">
         <p>Administrateur d’infrastructure spécialisé dans la sécurisation des environnements Windows et Linux.
-
-Issu d’un parcours Technicien Supérieur Systèmes et Réseaux (TSSR), j’ai développé une expertise dans la conception et le déploiement d’infrastructures d’entreprise sécurisées : segmentation réseau, Active Directory durci, mise en place de DMZ, VPN d’administration distante et reverse proxy HTTPS.
-            Actuellement en formation Administrateur d’Infrastructure Sécurisée (AIS) en alternance, je renforce mes compétences en hardening système, audit de sécurité et architecture réseau sécurisée.</p>
+        Expérience en segmentation réseau, Active Directory sécurisé, DMZ, VPN et reverse proxy HTTPS.
+        Actuellement en formation AIS en alternance avec un objectif de spécialisation en cybersécurité et architecture sécurisée.</p>
     </div>
 </section>
 
 <section>
     <h2>Projets Sécurité</h2>
+
     <div class="card">
-        <h3>Conception d’une Infrastructure Sécurisée d’Entreprise</h3>
-            <p>Déploiement d’un pare-feu pfSense
-               Segmentation réseau VLAN
-               Mise en place d’une DMZ
-               Active Directory sécurisé avec GPO
-               VPN d’administration distante
-               Déploiement automatisé Windows 11 (WDS)</p>
+        <h3>Infrastructure Sécurisée d’Entreprise</h3>
+        <p>pfSense • VLAN • DMZ • Active Directory sécurisé • VPN • WDS</p>
     </div>
 
     <div class="card">
-        <h3>Audit & Hardening Debian 12/13</h3>
-        <p>Analyse des services actifs
-           Sécurisation SSH (clé, désactivation root login)
-           Configuration firewall
-           Durcissement système
-           Supervision des logs</p>
+        <h3>Audit & Hardening Debian 12</h3>
+        <p>Sécurisation SSH • Firewall • Durcissement système • Supervision logs</p>
     </div>
 
     <div class="card">
-        <h3>Reverse Proxy HTTPS Sécurisé</h3>
-        <p>Apache2 en reverse proxy
-           Configuration SSL/TLS
-           Backend Nextcloud
-           Gestion fine des permissions Linux</p>
+        <h3>Reverse Proxy HTTPS</h3>
+        <p>Apache2 • SSL/TLS • Nextcloud • Gestion permissions Linux</p>
     </div>
+
 </section>
 
 <section>
     <h2>Stack Technique</h2>
     <div class="card">
-    <h3>Systèmes</h3>
-        <p>Windows Server • Active Directory • Debian 12 • Linux Hardening</p>
-    <h4>Réseau</h4>
-         <p>VLAN • OSPF • NAT • DHCP • DNS • Cisco • pfSense</p>
-    <h5>Virtualisation & Outils</h5>
-         <p>VMware • Proxmox • Hyper-V • PowerShell</p>
+        Windows Server • Active Directory • Debian • VMware • Proxmox • Cisco • pfSense • PowerShell • VPN • DMZ • Hardening Linux
     </div>
 </section>
 
