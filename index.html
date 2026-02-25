@@ -8,12 +8,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+/* RESET */
+* {margin:0; padding:0; box-sizing:border-box;}
 
 body {
-    margin: 0;
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #0b0f1a, #0d1b2a);
+    background: #0b0f1a;
     color: #e6f1ff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* CANVAS POUR ANIMATION RÉSEAU */
+#networkCanvas {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: -1;
+    background-color: #0b0f1a;
 }
 
 /* TERMINAL INTRO */
@@ -32,7 +46,6 @@ body {
 }
 
 /* HEADER */
-
 header {
     text-align: center;
     padding: 120px 20px;
@@ -70,8 +83,21 @@ section {
     box-shadow: 0 0 20px #007bff;
 }
 
-/* BUTTONS */
+/* SKILL BARS */
+.skill {margin-top: 15px;}
+.progress {
+    background-color: #0b0f1a;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 12px;
+    background: linear-gradient(90deg,#007bff,#00c3ff);
+    width: 0;
+    transition: width 2s ease;
+}
 
+/* BUTTONS */
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -82,38 +108,28 @@ section {
     border-radius: 5px;
     transition: 0.3s;
 }
-
 .btn:hover {
     background-color: #00c3ff;
     box-shadow: 0 0 15px #00c3ff;
 }
 
-/* SKILL BARS */
-
-.skill {
-    margin-top: 15px;
+/* LANGUAGE SWITCH */
+.langSwitch {
+    position: fixed;
+    top:20px;
+    right:20px;
+    background: #007bff;
+    color:white;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+    z-index:10;
+}
+.langSwitch:hover {
+    background: #00c3ff;
 }
 
-.progress {
-    background-color: #0b0f1a;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 10px;
-    background: linear-gradient(90deg, #007bff, #00c3ff);
-    width: 0;
-    transition: width 2s ease;
-}
-
-/* CONTACT */
-
-.contact a {
-    color: #00c3ff;
-    text-decoration: none;
-}
-
+/* FOOTER */
 .footer {
     text-align: center;
     padding: 40px;
@@ -124,66 +140,113 @@ section {
 </head>
 <body>
 
+<canvas id="networkCanvas"></canvas>
+
 <div id="intro">
     > Initialisation du portfolio...
 </div>
 
+<div class="langSwitch" onclick="toggleLang()">EN / FR</div>
+
 <header>
     <h1>Moussa Sakho</h1>
-    <p>Administrateur d’Infrastructure Sécurisée</p>
-    <p>Spécialisation en Cybersécurité & Architecture Réseau Sécurisée</p>
-
-    <a href="#" class="btn">Télécharger CV</a>
+    <p id="roleFR">Administrateur d’Infrastructure Sécurisée</p>
+    <p id="specializationFR">Spécialisation en Cybersécurité & Architecture Réseau Sécurisée</p>
+    <p id="roleEN" style="display:none;">Infrastructure Administrator</p>
+    <p id="specializationEN" style="display:none;">Specialization in Cybersecurity & Secured Network Architecture</p>
     <a href="https://github.com/msaka-75" target="_blank" class="btn">Voir GitHub</a>
 </header>
 
 <section>
-    <h2>Profil</h2>
-    <div class="card">
+    <h2 id="profilFR">Profil</h2>
+    <h2 id="profilEN" style="display:none;">Profile</h2>
+    <div class="card" id="cardProfilFR">
         Administrateur d’infrastructure orienté cybersécurité. 
         Spécialisé en segmentation réseau, Active Directory sécurisé, DMZ, VPN et hardening Linux.
         Approche basée sur la réduction de surface d’attaque et le principe du moindre privilège.
     </div>
+    <div class="card" id="cardProfilEN" style="display:none;">
+        Cybersecurity-oriented infrastructure administrator.
+        Skilled in network segmentation, secure Active Directory, DMZ, VPN, and Linux hardening.
+        Approach based on attack surface reduction and least privilege principle.
+    </div>
 </section>
 
 <section>
-    <h2>Compétences Techniques</h2>
+    <h2 id="compFR">Compétences Techniques</h2>
+    <h2 id="compEN" style="display:none;">Technical Skills</h2>
 
     <div class="skill">
         Active Directory & Windows Server
         <div class="progress"><div class="progress-bar" data-width="85%"></div></div>
     </div>
-
     <div class="skill">
         Sécurité Réseau (VLAN, pfSense, VPN)
         <div class="progress"><div class="progress-bar" data-width="80%"></div></div>
     </div>
-
     <div class="skill">
         Linux & Hardening
         <div class="progress"><div class="progress-bar" data-width="75%"></div></div>
     </div>
-
     <div class="skill">
         Virtualisation (VMware, Proxmox)
         <div class="progress"><div class="progress-bar" data-width="70%"></div></div>
     </div>
-
 </section>
 
 <section>
-    <h2>Objectif Professionnel</h2>
+    <h2 id="projectsFR">Projets & Réalisations</h2>
+    <h2 id="projectsEN" style="display:none;">Projects & Achievements</h2>
+
     <div class="card">
-        Évoluer vers un poste d’Administrateur Sécurité ou Ingénieur Infrastructure Sécurisée,
-        avec spécialisation en cybersécurité avancée et architecture réseau sécurisée.
+        <h3>Infrastructure Sécurisée d’Entreprise</h3>
+        <p>pfSense • VLAN • DMZ • Active Directory sécurisé • VPN • WDS</p>
+        <pre>
+        +------------------+
+        |     DMZ          |
+        +------------------+
+        | AD + VPN         |
+        +------------------+
+        </pre>
+    </div>
+
+    <div class="card">
+        <h3>Audit & Hardening Debian 12</h3>
+        <p>Sécurisation SSH • Firewall • Durcissement système • Supervision logs</p>
+        <pre>
+        +-----------+
+        | Debian 12 |
+        +-----------+
+        | SSH + FW  |
+        +-----------+
+        </pre>
+    </div>
+
+    <div class="card">
+        <h3>Reverse Proxy HTTPS</h3>
+        <p>Apache2 • SSL/TLS • Nextcloud • Gestion permissions Linux</p>
     </div>
 </section>
 
 <section>
-    <h2>Contact</h2>
+    <h2 id="objectifFR">Objectif Professionnel</h2>
+    <h2 id="objectifEN" style="display:none;">Career Goal</h2>
+    <div class="card" id="cardObjectifFR">
+        Évoluer vers un poste d’Administrateur Sécurité ou Ingénieur Infrastructure Sécurisée,
+        avec spécialisation en cybersécurité avancée et architecture réseau sécurisée.
+    </div>
+    <div class="card" id="cardObjectifEN" style="display:none;">
+        Evolve towards a Security Administrator or Secure Infrastructure Engineer role,
+        specializing in advanced cybersecurity and network architecture.
+    </div>
+</section>
+
+<section>
+    <h2 id="contactFR">Contact</h2>
+    <h2 id="contactEN" style="display:none;">Contact</h2>
     <div class="card contact">
-        📍 Paris<br>
-        💼 Alternance AIS<br>
+        📍 Île-de-France<br>
+        💼 Alternance AIS – Aston IT<br>
         🔗 <a href="https://github.com/msaka-75" target="_blank">github.com/msaka-75</a>
     </div>
 </section>
@@ -193,19 +256,79 @@ section {
 </div>
 
 <script>
+/* TERMINAL INTRO */
+setTimeout(() => { document.getElementById("intro").style.display="none"; },2000);
 
-/* TERMINAL INTRO DISAPPEAR */
-setTimeout(() => {
-    document.getElementById("intro").style.display = "none";
-}, 2000);
-
-/* SKILL ANIMATION */
+/* SKILL BARS */
 window.addEventListener("load", () => {
-    document.querySelectorAll(".progress-bar").forEach(bar => {
+    document.querySelectorAll(".progress-bar").forEach(bar=>{
         bar.style.width = bar.getAttribute("data-width");
     });
 });
 
+/* LANGUAGE SWITCH */
+function toggleLang(){
+    ["role","specialization","profil","comp","projects","objectif","contact"].forEach(id=>{
+        let fr=document.getElementById(id+"FR");
+        let en=document.getElementById(id+"EN");
+        if(fr.style.display=="none"){
+            fr.style.display="block"; en.style.display="none";
+        }else{fr.style.display="none"; en.style.display="block";}
+    });
+    ["cardProfil","cardObjectif"].forEach(id=>{
+        let fr=document.getElementById(id+"FR");
+        let en=document.getElementById(id+"EN");
+        if(fr.style.display=="none"){fr.style.display="block"; en.style.display="none";}
+        else{fr.style.display="none"; en.style.display="block";}
+    });
+}
+
+/* FOND ANIMÉ RÉSEAU + SCAN */
+const canvas = document.getElementById("networkCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let nodes=[];
+for(let i=0;i<50;i++){
+    nodes.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        vx:(Math.random()-0.5)*0.5,
+        vy:(Math.random()-0.5)*0.5
+    });
+}
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0;i<nodes.length;i++){
+        let n=nodes[i];
+        ctx.fillStyle="#00c3ff";
+        ctx.beginPath();
+        ctx.arc(n.x,n.y,2,0,Math.PI*2);
+        ctx.fill();
+        for(let j=i+1;j<nodes.length;j++){
+            let n2=nodes[j];
+            let dx=n.x-n2.x;
+            let dy=n.y-n2.y;
+            let dist=Math.sqrt(dx*dx+dy*dy);
+            if(dist<150){
+                ctx.strokeStyle="rgba(0,195,255,"+(1-dist/150)+")";
+                ctx.lineWidth=1;
+                ctx.beginPath();
+                ctx.moveTo(n.x,n.y);
+                ctx.lineTo(n2.x,n2.y);
+                ctx.stroke();
+            }
+        }
+        n.x+=n.vx; n.y+=n.vy;
+        if(n.x<0||n.x>canvas.width) n.vx*=-1;
+        if(n.y<0||n.y>canvas.height) n.vy*=-1;
+    }
+    requestAnimationFrame(draw);
+}
+draw();
+window.addEventListener("resize",()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
 </script>
 
 </body>
