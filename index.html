@@ -16,6 +16,23 @@ body {
     color: #e6f1ff;
 }
 
+/* TERMINAL INTRO */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0b0f1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    color: #00c3ff;
+    font-size: 20px;
+    z-index: 9999;
+}
+
+/* HEADER */
+
 header {
     text-align: center;
     padding: 120px 20px;
@@ -25,12 +42,6 @@ h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 48px;
     color: #00c3ff;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 10px #007bff; }
-    to { text-shadow: 0 0 25px #00c3ff; }
 }
 
 h2 {
@@ -59,9 +70,7 @@ section {
     box-shadow: 0 0 20px #007bff;
 }
 
-.button-container {
-    margin-top: 30px;
-}
+/* BUTTONS */
 
 .btn {
     display: inline-block;
@@ -79,6 +88,32 @@ section {
     box-shadow: 0 0 15px #00c3ff;
 }
 
+/* SKILL BARS */
+
+.skill {
+    margin-top: 15px;
+}
+
+.progress {
+    background-color: #0b0f1a;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 10px;
+    background: linear-gradient(90deg, #007bff, #00c3ff);
+    width: 0;
+    transition: width 2s ease;
+}
+
+/* CONTACT */
+
+.contact a {
+    color: #00c3ff;
+    text-decoration: none;
+}
+
 .footer {
     text-align: center;
     padding: 40px;
@@ -89,80 +124,89 @@ section {
 </head>
 <body>
 
+<div id="intro">
+    > Initialisation du portfolio...
+</div>
+
 <header>
     <h1>Moussa Sakho</h1>
     <p>Administrateur d’Infrastructure Sécurisée</p>
     <p>Spécialisation en Cybersécurité & Architecture Réseau Sécurisée</p>
 
-    <div class="button-container">
-        <a href="#" class="btn">Télécharger CV</a>
-        <a href="https://github.com/msaka-75" target="_blank" class="btn">Voir GitHub</a>
-    </div>
+    <a href="#" class="btn">Télécharger CV</a>
+    <a href="https://github.com/msaka-75" target="_blank" class="btn">Voir GitHub</a>
 </header>
 
 <section>
     <h2>Profil</h2>
     <div class="card">
-        <p>Administrateur d’infrastructure spécialisé dans la sécurisation des environnements Windows et Linux. 
-        Mon approche repose sur la segmentation réseau, la réduction de surface d’attaque, le durcissement système et la mise en place de contrôles d’accès robustes.</p>
-
-        <p>Issu d’un parcours TSSR, j’ai acquis une base solide en systèmes et réseaux. 
-        Actuellement en formation Administrateur d’Infrastructure Sécurisée (AIS), je conçois et déploie des architectures sécurisées intégrant Active Directory durci, DMZ, VPN d’administration distante et reverse proxy HTTPS.</p>
+        Administrateur d’infrastructure orienté cybersécurité. 
+        Spécialisé en segmentation réseau, Active Directory sécurisé, DMZ, VPN et hardening Linux.
+        Approche basée sur la réduction de surface d’attaque et le principe du moindre privilège.
     </div>
 </section>
 
 <section>
-    <h2>Projets & Réalisations</h2>
+    <h2>Compétences Techniques</h2>
 
-    <div class="card">
-        <h3>Infrastructure Sécurisée d’Entreprise</h3>
-        <p>Conception d’une architecture multi-segments avec pare-feu pfSense, VLAN, DMZ isolée et contrôleur de domaine sécurisé. 
-        Mise en place d’un VPN pour l’administration distante et déploiement automatisé des postes clients via WDS.</p>
+    <div class="skill">
+        Active Directory & Windows Server
+        <div class="progress"><div class="progress-bar" data-width="85%"></div></div>
     </div>
 
-    <div class="card">
-        <h3>Audit & Hardening Debian 12</h3>
-        <p>Analyse des services exposés, sécurisation SSH (authentification par clé, désactivation root login), configuration firewall et supervision des journaux système afin de réduire les vulnérabilités potentielles.</p>
+    <div class="skill">
+        Sécurité Réseau (VLAN, pfSense, VPN)
+        <div class="progress"><div class="progress-bar" data-width="80%"></div></div>
     </div>
 
-    <div class="card">
-        <h3>Reverse Proxy HTTPS Sécurisé</h3>
-        <p>Déploiement Apache2 en reverse proxy avec certificats SSL/TLS, sécurisation des flux internes et mise en production d’un service Nextcloud isolé en backend.</p>
+    <div class="skill">
+        Linux & Hardening
+        <div class="progress"><div class="progress-bar" data-width="75%"></div></div>
     </div>
 
-</section>
-
-<section>
-    <h2>Approche Sécurité</h2>
-    <div class="card">
-        <p>Ma vision de la cybersécurité repose sur :</p>
-        <ul>
-            <li>Principe du moindre privilège</li>
-            <li>Segmentation et cloisonnement réseau</li>
-            <li>Durcissement systématique des services</li>
-            <li>Chiffrement des communications</li>
-            <li>Surveillance et journalisation continue</li>
-        </ul>
+    <div class="skill">
+        Virtualisation (VMware, Proxmox)
+        <div class="progress"><div class="progress-bar" data-width="70%"></div></div>
     </div>
-</section>
 
-<section>
-    <h2>Stack Technique</h2>
-    <div class="card">
-        Windows Server • Active Directory • Debian • VMware • Proxmox • Cisco • pfSense • PowerShell • VPN • DMZ • Hardening Linux
-    </div>
 </section>
 
 <section>
     <h2>Objectif Professionnel</h2>
     <div class="card">
-        <p>Évoluer vers un poste d’Administrateur Sécurité / Ingénieur Infrastructure Sécurisée, avec une spécialisation en cybersécurité avancée et architecture réseau sécurisée.</p>
+        Évoluer vers un poste d’Administrateur Sécurité ou Ingénieur Infrastructure Sécurisée,
+        avec spécialisation en cybersécurité avancée et architecture réseau sécurisée.
+    </div>
+</section>
+
+<section>
+    <h2>Contact</h2>
+    <div class="card contact">
+        📍 Paris<br>
+        💼 Alternance AIS<br>
+        🔗 <a href="https://github.com/msaka-75" target="_blank">github.com/msaka-75</a>
     </div>
 </section>
 
 <div class="footer">
     © 2026 Moussa Sakho | Cybersecurity Portfolio
 </div>
+
+<script>
+
+/* TERMINAL INTRO DISAPPEAR */
+setTimeout(() => {
+    document.getElementById("intro").style.display = "none";
+}, 2000);
+
+/* SKILL ANIMATION */
+window.addEventListener("load", () => {
+    document.querySelectorAll(".progress-bar").forEach(bar => {
+        bar.style.width = bar.getAttribute("data-width");
+    });
+});
+
+</script>
 
 </body>
 </html>
